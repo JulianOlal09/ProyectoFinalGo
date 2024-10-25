@@ -8,7 +8,6 @@ import (
 	"github.com/gorilla/mux"
 )
 
-// Estructura para representar un estudiante
 type Student struct {
 	StudentID int    `json:"student_id"`
 	Name      string `json:"name"`
@@ -16,7 +15,7 @@ type Student struct {
 	Email     string `json:"email"`
 }
 
-// Crear un nuevo estudiante
+// Nuevo estudiante
 func InsertStudent(w http.ResponseWriter, r *http.Request) {
 	var student Student
 	if err := json.NewDecoder(r.Body).Decode(&student); err != nil {
@@ -24,7 +23,6 @@ func InsertStudent(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Cambiamos la consulta para no incluir student_id (que es autoincremental)
 	query := "INSERT INTO students (name, `group`, email) VALUES (?, ?, ?)"
 	_, err := db.Exec(query, student.Name, student.Group, student.Email)
 	if err != nil {
@@ -36,7 +34,7 @@ func InsertStudent(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("Estudiante insertado correctamente"))
 }
 
-// Actualizar un estudiante
+// Actualizar estudiante
 func UpdateStudent(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	studentID := vars["student_id"]
@@ -58,7 +56,7 @@ func UpdateStudent(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("Estudiante actualizado correctamente"))
 }
 
-// Eliminar un estudiante
+// Eliminar estudiante
 func DeleteStudent(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	studentID := vars["student_id"]
@@ -74,7 +72,7 @@ func DeleteStudent(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("Estudiante eliminado correctamente"))
 }
 
-// Obtener un estudiante específico
+// Obtener estudiante específico
 func GetStudent(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	studentID := vars["student_id"]

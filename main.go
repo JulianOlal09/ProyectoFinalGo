@@ -9,7 +9,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
-var db *sql.DB // Definición global de db
+var db *sql.DB
 
 func main() {
 	var err error
