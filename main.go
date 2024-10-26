@@ -13,7 +13,7 @@ var db *sql.DB
 
 func main() {
 	var err error
-	dsn := "usuario:contraseña@tcp(127.0.0.1:3306)/nombre_base_de_datos?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := "root:abigail30@tcp(127.0.0.1:3306)/escuela?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err = sql.Open("mysql", dsn)
 	if err != nil {
 		log.Fatal("No se pudo conectar a la base de datos:", err)
@@ -21,11 +21,11 @@ func main() {
 
 	r := mux.NewRouter()
 
-	r.HandleFunc("/subjects", CreateSubject).Methods("POST")
-	r.HandleFunc("/subjects/{subject_id}", UpdateSubject).Methods("PUT")
-	r.HandleFunc("/subjects/{subject_id}", DeleteSubject).Methods("DELETE")
-	r.HandleFunc("/subjects/{subject_id}", GetSubject).Methods("GET")
-	r.HandleFunc("/subjects", GetAllSubjects).Methods("GET")
+	r.HandleFunc("/api/subjects", CreateSubject).Methods("POST")
+	r.HandleFunc("/api/subjects/{subject_id}", UpdateSubject).Methods("PUT")
+	r.HandleFunc("/api/subjects/{subject_id}", DeleteSubject).Methods("DELETE")
+	r.HandleFunc("/api/subjects/{subject_id}", GetSubject).Methods("GET")
+	r.HandleFunc("/api/subjects", GetAllSubjects).Methods("GET")
 
 	// Ejecutar servidor
 	log.Println("Servidor corriendo en el puerto 8080")
