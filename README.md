@@ -3,7 +3,7 @@ Proyecto Final Taller Go (Equipo 6)
 
 A continuación se detallan las instrucciones y pasos a seguir para configurar y ejecutar el proyecto. 
 
-1. Clonar el repositorio para
+1. Clonar el repositorio 
   
    git clone <https://github.com/JulianOlal09/ProyectoFinalGo>
    cd proyecto-final-go
